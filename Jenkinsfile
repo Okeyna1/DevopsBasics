@@ -5,7 +5,7 @@ pipeline{
             }
             agent none
             stages{
-                stage('Checkout'){
+                stage('Checkout on master'){
                     agent any
                     steps{
                 echo 'cloning...'
@@ -39,7 +39,7 @@ pipeline{
                     }
                 }	
                 }
-                stage('Package'){
+                stage('Package on master'){
                     agent any
                     steps{
                         sh 'mvn package'
