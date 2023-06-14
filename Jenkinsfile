@@ -12,23 +12,23 @@ pipeline{
                         git 'https://github.com/Okeyna1/DevopsBasics.git'
                     }
                 }
-                stage('Compile'){
+                stage('Compile on slave1'){
                     agent {label 'slave1'}
                     steps{
                         echo 'compiling...'
                         sh 'mvn compile'
                 }
                 }
-                stage('CodeReview'){
-                    agent {label 'slave1'}
+                stage('CodeReview on slave2'){
+                    agent {label 'slave2'}
                     steps{
                     
                 echo 'codeReview...'
                         sh 'mvn pmd:pmd'
                     }
                 }
-                stage('UnitTest'){
-                    agent {label 'slave2'}
+                stage('UnitTest on slave3'){
+                    agent {label 'slave3'}
                     steps{
                     echo 'Testing'
                         sh 'mvn test'
